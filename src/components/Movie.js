@@ -11,8 +11,8 @@ const Movie = ({movie}) => {
         </div>
         <div className="movie-card-overlay">
             <div className="movie-card-text">
-                {movie.title}
-                {movie.year}
+                <h3>{movie.title}</h3>
+                <h3>{movie.year}</h3>
             </div>
         </div>
 
