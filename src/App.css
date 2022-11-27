@@ -3,6 +3,8 @@
     text-align: center;
     padding: 10px;
     z-index: 1;
+    width: 20%;
+    
 }
 
 .movie-card-list{
@@ -10,13 +12,14 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    text-align: center;
     
 }
 
 .movie-card-container{
     position: relative;
-    
 }
+
 
 .movie-card-overlay{
     position: absolute;
@@ -26,7 +29,7 @@
     width: 218.17px;
     opacity: 0;
     transition: .5s ease;
-    background-color: rgba(75, 70, 70, 0.705);
+    background-color: rgba(10, 10, 10, 0.904);
     color: white;
     font-size: 20px;
     text-align: center;
@@ -38,7 +41,7 @@
 }
 
 .movie-card-overlay:hover{
-    opacity: 0.6;
+    opacity: 0.95;
 }
 
 .movie-card-text {
@@ -79,6 +82,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 101;
+    width: 80%;
+    height: 80%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .close-pop-up{
@@ -90,4 +97,34 @@
 
 body.active-modal {
     overflow-y: hidden;
+}
+
+.pop-up-header{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 45px;
+}
+
+.pop-up-media{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 10px;
+}
+
+.pop-up-actors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 200px;
+}
+
+.pop-up-actor{
+    padding-bottom: 4px ;
+}
+
+
+.pop-up-trailer{
+    height: 300px;
+    width: 2000px;
 }
