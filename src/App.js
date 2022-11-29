@@ -12,7 +12,7 @@ function App() {
   const [moviesData,setMoviesData] = useState([]);
 
   const fetchMoviesData = async () => {
-    const response = await fetch("https://imdb-api.com/en/API/Top250Movies/k_fxsv9nk9");
+    const response = await fetch("https://imdb-api.com/en/API/Top250Movies/k_ttyuxc1j");
     const data = await response.json();
     setMoviesData(data);
   }

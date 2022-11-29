@@ -5,9 +5,11 @@ const Movie = ({movie}) => {
 
     const [isOpen,setIsOpen] = useState(false);
 
+
     const togglePopUp = () => {
         setIsOpen(!isOpen);
     }
+
 
     if(isOpen) {
         document.body.classList.add('active-modal')
@@ -31,7 +33,7 @@ const Movie = ({movie}) => {
                 </div>
             </div>
 
-            {isOpen && <MoviePopUp movie={movie} togglePopUp={togglePopUp}/>}
+            {isOpen && <MoviePopUp key={movie.id} movie={movie} togglePopUp={togglePopUp} />}
 
         </div>
     )

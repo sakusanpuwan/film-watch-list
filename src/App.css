@@ -82,10 +82,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 101;
-    width: 80%;
-    height: 80%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    width: 95%;
+    height: 95%;
+    margin-top: 4.5%;
 }
 
 .close-pop-up{
