@@ -31,8 +31,8 @@ const MoviePopUp = ({movie,togglePopUp}) => {
     })
     
     const getSimilarMovies = ((data) => {
-        const similarMoviesImages = data.map(movie => {
-            return <img className="pop-up-sim-movies" key={movie.id} src={movie.image} height="100" width="75"></img>
+        const similarMoviesImages = data.slice(0,6).map(movie => {
+            return <img className="pop-up-sim-movie" key={movie.id} src={movie.image} height="100" width="75"></img>
         })
         return similarMoviesImages
     })
@@ -47,26 +47,42 @@ const MoviePopUp = ({movie,togglePopUp}) => {
     return (
         <>
         {movieDetails ? (
-                    <div className="pop-up-container">
+                <div className="pop-up-container">
                     <div className="overlay" onClick={togglePopUp}></div>
                     <div className="pop-up">
                         <div className="pop-up-header">
                             <h2>{movieDetails.fullTitle}   {movieDetails.runtimeStr}</h2>
-                            <h3>{movieDetails.imDbRating}⭐ {movieDetails.metacriticRating}Ⓜ️ </h3>
+                            <h3>{movieDetails.imDbRating}⭐ {movieDetails.metacriticRating}Ⓜ️ {movieDetails.ratings.rottenTomatoes}🍅 </h3>
                         </div>
                         <div className="pop-up-media">
-                            <img src={movieDetails.image} height="300"></img>
-                            <iframe className="pop-up-trailer" src={movieDetails.trailer.linkEmbed} />
+                            <img className="pop-up-poster" src={movieDetails.image} height="300"></img>
+                            <iframe className="pop-up-trailer" src={`${movieDetails.trailer.linkEmbed}?autoplay=false&width=500`} width="500" height="300" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"/>
                             <div className="pop-up-actors">
                                 {getActorImages(movieDetails.actorList)}
                             </div>
+                            <div className="pop-up-sim-movies">
+                                {getSimilarMovies(movieDetails.similars)}
+                            </div>
                         </div>
-                        <p className="pop-up-plot">
-                            {movieDetails.plot}
-                        </p>
-                        <di>
-                            {getSimilarMovies(movieDetails.similars)}
-                        </di>
+                        <div className="pop-up-text">
+                            <div className='pop-up-text-left'>
+                                <p>{movieDetails.plot}</p>
+                                <h4> Director: {movieDetails.directors}</h4>
+                                <h4> Writers: {movieDetails.writers}</h4>
+                                <h4> Stars: {movieDetails.stars}</h4>
+                            </div>
+                            <div className='pop-up-text-right'>
+                                <div className='pop-up-genres'>
+                                    <h4 >{movieDetails.genreList[0].value}</h4>
+                                    <h4>{movieDetails.genreList[1].value}</h4>
+                                
+                                </div>
+                                <div className='pop-up-money'>
+                                    <h4> Budget: {movieDetails.boxOffice.budget}</h4>
+                                    <h4> Gross: {movieDetails.boxOffice.cumulativeWorldwideGross}</h4>
+                                </div>
+                            </div>
+                            <button className='pop-up-btn'>Add to watchlist!</button></div>
                         <button className="close-pop-up" onClick={togglePopUp}>X</button>
                     </div>
                 </div>

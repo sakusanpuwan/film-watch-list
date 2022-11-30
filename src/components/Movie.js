@@ -22,7 +22,7 @@ const Movie = ({movie}) => {
         
             <div className="movie-card">
                 <h3>{movie.rank}.</h3>
-                <img src={movie.image} height="300px"></img> 
+                <img className="movie-card-poster" src={movie.image} height="300px"></img> 
                 
             </div>
             <div className="movie-card-overlay">

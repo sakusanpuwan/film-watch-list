@@ -5,23 +5,23 @@
     z-index: 1;
     width: 20%;
     
-}
-
-.movie-card-list{
+  }
+  
+  .movie-card-list{
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
     
-}
-
-.movie-card-container{
+  }
+  
+  .movie-card-container{
     position: relative;
-}
-
-
-.movie-card-overlay{
+  }
+  
+  
+  .movie-card-overlay{
     position: absolute;
     top: 72px;
     left: 10px;
@@ -37,22 +37,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-}
-
-.movie-card-overlay:hover{
+  
+  }
+  
+  .movie-card-overlay:hover{
     opacity: 0.95;
-}
-
-.movie-card-text {
+  }
+  
+  .movie-card-text {
     color: white;
     font-size: 20px;
     position: absolute;
     text-align: center;
     
-}
+  }
 
-.pop-up-container{
+  .movie-card-poster{
+    border-radius: 8px;
+  }
+  
+  .pop-up-container{
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -61,9 +65,9 @@
     bottom: 0;
     position: fixed;
     z-index: 99;
-}
-
-.overlay{
+  }
+  
+  .overlay{
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -73,9 +77,9 @@
     position: fixed;
     background: rgba(49,49,49,0.8);
     z-index: 100;
-}
-
-.pop-up{
+  }
+  
+  .pop-up{
     position: absolute;
     background: rgba(236, 218, 218, 0.89);
     top: 40%;
@@ -85,45 +89,125 @@
     width: 95%;
     height: 95%;
     margin-top: 4.5%;
-}
-
-.close-pop-up{
+  }
+  
+  .close-pop-up{
     position: absolute;
     top: 10px;
     right: 10px;
     padding: 5px 7px;
-}
-
-body.active-modal {
+  }
+  
+  body.active-modal {
     overflow-y: hidden;
-}
-
-.pop-up-header{
+  }
+  
+  .pop-up-header{
     display: flex;
     justify-content: space-between;
-    margin-left: 10px;
+    margin-left: 30px;
     margin-right: 45px;
-}
-
-.pop-up-media{
+  }
+  
+  .pop-up-media{
     display: flex;
     justify-content: space-around;
     margin-left: 10px;
-}
-
-.pop-up-actors{
+  }
+  
+  .pop-up-actors{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     max-width: 200px;
-}
-
-.pop-up-actor{
+  }
+  
+  .pop-up-actor{
     padding-bottom: 4px ;
-}
-
-
-.pop-up-trailer{
-    height: 300px;
-    width: 2000px;
-}
+    border-radius: 8px;
+  }
+  
+  .pop-up-poster{
+    border-radius: 8px;
+  }
+  
+  .pop-up-sim-movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 200px;
+  }
+  
+  .pop-up-sim-movie{
+    padding-bottom: 4px;
+    border-radius: 8px;
+  }
+  
+  .pop-up-text{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .pop-up-text-left{
+    max-width: 60%;
+    text-align: justify;
+  }
+  
+  .pop-up-text-left h4 {
+    border-bottom: 2px solid black;
+  }
+  
+  .pop-up-text-right {
+    margin-left: 4%;
+  }
+  
+  
+  
+  .pop-up-genres{
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .pop-up-genres h4{
+    padding: 5px;
+    margin-right: 0.25rem;
+    margin-top: 15px;
+    background-color: rgb(109, 89, 199);
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+  
+  .pop-up-money h4{
+    padding: 5px;
+    margin-right: 0.25rem;
+    background-color: green;
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+  
+  
+  .pop-up-trailer{
+    border-radius: 8px;
+  }
+  
+  .pop-up-btn{
+    margin-left: 3%;
+    margin-top: 5%;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    height: 30%;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    margin-right: 3%;
+  }
+  
+  .pop-up-btn:hover{
+    background-color: red;
+    color: white;
+  }
