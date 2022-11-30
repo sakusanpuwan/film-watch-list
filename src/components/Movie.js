@@ -21,8 +21,8 @@ const Movie = ({movie}) => {
         <div className="movie-card-container" onClick={togglePopUp}>
         
             <div className="movie-card">
-                <h3>{movie.rank}.</h3>
-                <img className="movie-card-poster" src={movie.image} height="300px"></img> 
+                {/* <h3 className="movie-card-rank">{movie.rank}.</h3> */}
+                <img className="movie-card-poster" src={movie.image} height="300px" width="218.16px"></img> 
                 
             </div>
             <div className="movie-card-overlay">

@@ -8,7 +8,6 @@ const MovieList = ({moviesData}) => {
 
     return (
         <>
-        <h1>MovieList</h1>
         <div className="movie-card-list">
             {movieComponents}
         </div>

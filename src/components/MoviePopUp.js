@@ -10,7 +10,7 @@ const MoviePopUp = ({movie,togglePopUp}) => {
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
-                const response = await fetch(`https://imdb-api.com/en/API/Title/k_ttyuxc1j/${movie.id}/FullActor,Trailer,Ratings,`);
+                const response = await fetch(`https://imdb-api.com/en/API/Title/k_fxsv9nk9/${movie.id}/FullActor,Trailer,Ratings,`);
                 const data = await response.json();
                 setMovieDetails(data);
                 

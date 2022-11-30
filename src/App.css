@@ -1,3 +1,38 @@
+.App{
+    background-color: grey;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: rgb(124, 11, 11);
+}
+
+
+.navbar li a{
+    display: block;
+    color: whitesmoke;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navbar li a:hover {
+    background-color:black ;
+}
+
+.navbar > .active > a{
+    background-color: #4CAF50;
+}
+
 .movie-card {
     display: block;
     text-align: center;
@@ -19,11 +54,17 @@
   .movie-card-container{
     position: relative;
   }
+
+  .movie-card-rank{
+    text-align: center;
+    margin-left: 200%;
+  }
   
+
   
   .movie-card-overlay{
     position: absolute;
-    top: 72px;
+    top: 10px;
     left: 10px;
     height: 300px;
     width: 218.17px;
@@ -37,7 +78,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  
+    border-radius: 8px;
   }
   
   .movie-card-overlay:hover{
@@ -82,7 +123,7 @@
   .pop-up{
     position: absolute;
     background: rgba(236, 218, 218, 0.89);
-    top: 40%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 101;
