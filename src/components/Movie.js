@@ -21,15 +21,14 @@ const Movie = ({movie}) => {
         <div className="movie-card-container" onClick={togglePopUp}>
         
             <div className="movie-card">
-                {/* <h3 className="movie-card-rank">{movie.rank}.</h3> */}
                 <img className="movie-card-poster" src={movie.image} height="300px" width="218.16px"></img> 
                 
             </div>
             <div className="movie-card-overlay">
                 <div className="movie-card-text">
                     <h3>{movie.title}</h3>
-                    <h3>{movie.year}</h3>
-                    <h3>{movie.imDbRating}⭐</h3>
+                    <h3>{movie.year ? movie.year : movie.description}</h3>
+                    <h3>{movie.imDbRating ? movie.imDbRating : null}⭐</h3>
                 </div>
             </div>
 
