@@ -1,5 +1,9 @@
 .App{
-    background-color: grey;
+    background-color: #1B1E1F;
+}
+
+.home-container{
+  height: 100vh;
 }
 
 .navbar{
@@ -13,25 +17,26 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    background-color: rgb(124, 11, 11);
+    background-color: #0D0E0E;
 }
 
 
 .navbar li a{
     display: block;
-    color: whitesmoke;
+    color: rgb(180, 169, 169);
     text-align: center;
     text-decoration: none;
     padding: 10px;
 }
 
 .navbar li a:hover {
-    background-color:black ;
+    color:rgb(107, 46, 46) ;
 }
 
-.navbar > .active > a{
-    background-color: #4CAF50;
+.navbar li a:active{
+    color: #1b5e1d;
 }
+
 
 .movie-card {
     display: block;
@@ -53,6 +58,7 @@
   
   .movie-card-container{
     position: relative;
+    cursor: pointer;
   }
 
   .movie-card-rank{
@@ -259,4 +265,34 @@
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
+  }
+
+  .search-container{
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    height: 100vh;
+  }
+
+  .search-bar{
+    border-radius: 4px;
+    background-color: #181A1B;
+    color: #90908F;
+    padding: 5px;
+    margin-right: 5px;
+    border: none;
+  }
+
+  .search-bar:focus {
+    background-color: rgb(90, 18, 18);
+  }
+
+  .search-submit-btn{
+    padding: 5px;
+    background-color: rgb(90, 18, 18);
+    color: #90908F;
+    cursor: pointer;
+    border: none;
+    
   }

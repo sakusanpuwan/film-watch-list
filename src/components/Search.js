@@ -31,7 +31,7 @@ const Search = () => {
         <div className="search-container">
             <form onSubmit={handleSubmit} className="search-form" >
                 <input placeholder="Search..." className="search-bar" type="text" onChange={handleChange} value={search}></input>
-                <button type="submit">Submit</button>
+                <button className="search-submit-btn" type="submit">Submit</button>
             </form>
             <div className="movie-card-list">
                 {searchMovieDetails.results && searchMovieDetails.results.map(movie => {
