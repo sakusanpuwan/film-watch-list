@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import './App.css';
 import Home from './components/Home';
 import MovieList from './components/MovieList';
+import Search from './components/Search';
 import Top250 from './components/Top250';
 import Watchlist from './components/WatchList';
 
@@ -45,9 +46,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/watchlist' element={<Watchlist/>} />
-          <Route path='/top250' element={<MovieList moviesData={top250MoviesData}/>} />
-          <Route path='/popular' element={<MovieList moviesData={popMoviesData}/>} />
-          <Route path='/search' element={<MovieList/>} />
+          <Route path='/top250' element={<MovieList moviesData={top250MoviesData.items}/>} />
+          <Route path='/popular' element={<MovieList moviesData={popMoviesData.items}/>} />
+          <Route path='/search' element={<Search/>} />
 
 
         </Routes>

@@ -2,7 +2,7 @@ import Movie from "./Movie";
 
 const MovieList = ({moviesData}) => {
 
-    const movieComponents = moviesData.items.map(movie => {
+    const movieComponents = moviesData.map(movie => {
         return <Movie key={movie.id} movie={movie}/>
     })
 
