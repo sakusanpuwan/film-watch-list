@@ -83,7 +83,7 @@ const MoviePopUp = ({movie,togglePopUp}) => {
                                 </div>
                             </div>
                             <button className='pop-up-btn'>Add to watchlist!</button></div>
-                        <button className="close-pop-up" onClick={togglePopUp}>X</button>
+                        <button className="close-pop-up-btn" onClick={togglePopUp}>❌</button>
                     </div>
                 </div>
         ) : null}

@@ -2,7 +2,8 @@ const Home = () => {
 
     return(
         <div className="home-container">
-            <h1>Homeee</h1>
+            <h1>Welcome to your watchlist!</h1>
+            
         </div>
     )
 }
