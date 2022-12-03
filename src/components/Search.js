@@ -35,7 +35,7 @@ const Search = () => {
             </form>
             <div className="movie-card-list">
                 {searchMovieDetails.results && searchMovieDetails.results.map(movie => {
-                    return <Movie key={movie.id} movie={movie}/>
+                    return <Movie key={movie.id} movie={movie} />
                 })}
             </div>
 

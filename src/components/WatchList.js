@@ -20,7 +20,7 @@ const Watchlist = () => {
 
     return (
         <div className="watchlist-container">
-            <h1>Watchlist</h1>
+            <h1>Your Watchlist</h1>
             
             <div className="movie-card-list"> 
                 {myMovies.map((movie) => { 

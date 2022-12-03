@@ -297,3 +297,9 @@
     border: none;
     
   }
+
+  .watchlist-container{
+    text-align: center;
+    color: white;
+    min-height: 100vh;
+  }
