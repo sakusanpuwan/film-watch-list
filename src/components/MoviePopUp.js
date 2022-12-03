@@ -6,6 +6,7 @@ const MoviePopUp = ({movie,togglePopUp}) => {
 
     // k_fxsv9nk9
     // k_ttyuxc1j
+    
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
