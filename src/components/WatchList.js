@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebase-config";
-import { collection, doc, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 import Movie from "./Movie";
 
 
@@ -18,6 +18,8 @@ const Watchlist = () => {
         fetchMyMovies();
     })
 
+
+
     return (
         <div className="watchlist-container">
             <h1>Your Watchlist</h1>
@@ -25,7 +27,7 @@ const Watchlist = () => {
             <div className="movie-card-list"> 
                 {myMovies.map((movie) => { 
                     return (
-                    <Movie key={movie.imDb} movie={movie} />
+                    <Movie key={movie.imDb} movie={movie}  />
                 )})}
             </div>
         </div>

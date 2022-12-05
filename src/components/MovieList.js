@@ -1,9 +1,9 @@
 import Movie from "./Movie";
 
-const MovieList = ({moviesData}) => {
+const MovieList = ({moviesData,addMovie}) => {
 
     const movieComponents = moviesData.map(movie => {
-        return <Movie key={movie.id} movie={movie}/>
+        return <Movie key={movie.id} movie={movie} addMovie={addMovie}/>
     })
 
     return (

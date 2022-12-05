@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 
-const MoviePopUp = ({movie,togglePopUp}) => {
+
+const MoviePopUp = ({movie,togglePopUp,addMovie}) => {
 
     const [movieDetails,setMovieDetails] = useState(null);
 
@@ -24,6 +26,11 @@ const MoviePopUp = ({movie,togglePopUp}) => {
         fetchMovieDetails();
     },[]);
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     addMovie(movieDetails);
+    // }
+
 
 
     const getActorImages = ((data) => {
@@ -43,6 +50,7 @@ const MoviePopUp = ({movie,togglePopUp}) => {
     // const actorImages = movieDetails.actorList.slice(0,6).map(actor => {
     //     return <img className="pop-up-actor" key={actor.id} src={actor.image} height="100" width="75"></img>
     // });
+
 
 
     // For the initial render (data is not fetched yet), it will be empty. so nested property would be undefined.
@@ -85,7 +93,7 @@ const MoviePopUp = ({movie,togglePopUp}) => {
                                     <h4> Gross: {movieDetails.boxOffice.cumulativeWorldwideGross}</h4>
                                 </div>
                             </div>
-                            <button className='pop-up-btn'>Add to watchlist!</button></div>
+                            <button className='pop-up-btn' onClick={addMovie(movieDetails)}>Add to watchlist!</button></div>
                         <button className="close-pop-up-btn" onClick={togglePopUp}>❌</button>
                     </div>
                 </div>
