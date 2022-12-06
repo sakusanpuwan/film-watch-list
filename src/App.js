@@ -16,6 +16,7 @@ function App() {
 
   const [top250MoviesData,setTop250MoviesData] = useState([]);
   const [popMoviesData,setPopMoviesData] = useState([]);
+  
   const watchlistCollectionRef = collection(db,"watchlist") 
 
 
@@ -37,18 +38,18 @@ function App() {
   },[])
 
 
-  const addMovie = async (movie) => {
-    await addDoc(watchlistCollectionRef,  {imDb:movie.id , imDbRating:movie.imDbRating , image:movie.image , fullTitle:movie.fullTitle });
-    console.log(movie.fullTitle + "added to firestore");
-  }
-
-  // const addMovie = async(movie) => {
-  //   const data = await getDocs(watchlistCollectionRef);
-  //   const found = data.docs.some(doc => doc.fullTitle === movie.fullTitle);
-  //   if (!found) {
-  //     await addDoc(watchlistCollectionRef,  {imDb:movie.id , imDbRating:movie.imDbRating , image:movie.image , fullTitle:movie.fullTitle });
-  //   }
+  // const addMovie = async (movie) => {
+  //   await addDoc(watchlistCollectionRef,  {imDb:movie.id , imDbRating:movie.imDbRating , image:movie.image , fullTitle:movie.fullTitle });
+  //   console.log(movie.fullTitle + "added to firestore");
   // }
+
+  const addMovie = async(movie) => {
+    const data = await getDocs(watchlistCollectionRef);
+    const found = data.docs.some(doc => doc.imDb === movie.id);
+    if (!found) {
+      await addDoc(watchlistCollectionRef,  {imDb:movie.id , imDbRating:movie.imDbRating , image:movie.image , fullTitle:movie.fullTitle });
+    }
+  }
 
 
 
