@@ -4,7 +4,7 @@ import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 import Movie from "./Movie";
 
 
-const Watchlist = () => {
+const Watchlist = ({addMovie}) => {
 
     const [myMovies, setMyMovies] = useState([]);
     const watchlistCollectionRef = collection(db,"watchlist") 
@@ -16,7 +16,9 @@ const Watchlist = () => {
 
     const fetchMyMovies = useCallback(async () => {
         const data = await getDocs(watchlistCollectionRef);
-        setMyMovies(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        const response = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        const unique = [...new Map(response.map(item => [item['imDb'], item])).values()]
+        setMyMovies(unique);
     }, [collection])
 
     useEffect(() => {
@@ -32,7 +34,7 @@ const Watchlist = () => {
             <div className="movie-card-list"> 
                 {myMovies.map((movie) => { 
                     return (
-                    <Movie key={movie.imDb} movie={movie}  />
+                    <Movie key={movie.imDb} movie={movie} addMovie = {addMovie} />
                 )})}
             </div>
         </div>
@@ -53,4 +55,4 @@ export default Watchlist;
 
 // // One solution could be to move the functionality in your effect into its own function and wrap it in an useCallbac. 
 // You can then call this function from an ´useEffect` on initial load, 
-// and after that simply load the effect whenever you delete or add movies. 
+// and after that simply load the effect whenever you delete or add movies.

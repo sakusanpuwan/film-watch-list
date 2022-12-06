@@ -21,13 +21,13 @@ function App() {
 
 
   const fetch250MoviesData = async () => {
-    const response = await fetch("https://imdb-api.com/en/API/Top250Movies/k_ttyuxc1j");
+    const response = await fetch("https://imdb-api.com/en/API/Top250Movies/k_fxsv9nk9");
     const data = await response.json();
     setTop250MoviesData(data);
   }
 
   const fetchPopMovieData = async () => {
-    const response = await fetch("https://imdb-api.com/en/API/MostPopularMovies/k_ttyuxc1j");
+    const response = await fetch("https://imdb-api.com/en/API/MostPopularMovies/k_fxsv9nk9");
     const data = await response.json();
     setPopMoviesData(data);
   }
@@ -67,7 +67,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path='/watchlist' element={<Watchlist/>} />
+          <Route path='/watchlist' element={<Watchlist addMovie={addMovie}/>} />
           <Route path='/top250' element={<MovieList moviesData={top250MoviesData.items} addMovie={addMovie}/>} />
           <Route path='/popular' element={<MovieList moviesData={popMoviesData.items} addMovie={addMovie}/>} />
           <Route path='/search' element={<Search addMovie={addMovie}/>} />
