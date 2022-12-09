@@ -4,7 +4,7 @@ import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 import Movie from "./Movie";
 
 
-const Watchlist = ({addMovie}) => {
+const Watchlist = ({addMovie , deleteMovie}) => {
 
     const [myMovies, setMyMovies] = useState([]);
     const watchlistCollectionRef = collection(db,"watchlist") 
@@ -34,7 +34,7 @@ const Watchlist = ({addMovie}) => {
             <div className="movie-card-list"> 
                 {myMovies.map((movie) => { 
                     return (
-                    <Movie key={movie.imDb} movie={movie} addMovie = {addMovie} />
+                    <Movie key={movie.imDb} movie={movie} addMovie = {addMovie} deleteMovie = {deleteMovie} />
                 )})}
             </div>
         </div>

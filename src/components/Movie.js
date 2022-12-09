@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MoviePopUp from "./MoviePopUp";
 
-const Movie = ({movie,addMovie}) => {
+const Movie = ({movie,addMovie,deleteMovie}) => {
 
     const [isOpen,setIsOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const Movie = ({movie,addMovie}) => {
                 </div>
             </div>
 
-            {isOpen && <MoviePopUp key={movie.id} movie={movie} togglePopUp={togglePopUp} addMovie={addMovie} />}
+            {isOpen && <MoviePopUp key={movie.id} movie={movie} togglePopUp={togglePopUp} addMovie={addMovie} deleteMovie={deleteMovie} />}
 
         </div>
     )

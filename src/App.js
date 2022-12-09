@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import { db } from "./firebase-config";
-import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, addDoc, deleteDoc } from 'firebase/firestore';
 import './App.css';
 import Home from './components/Home';
 import MovieList from './components/MovieList';
@@ -49,9 +49,12 @@ function App() {
     if (!found) {
       await addDoc(watchlistCollectionRef,  {imDb:movie.id , imDbRating:movie.imDbRating , image:movie.image , fullTitle:movie.fullTitle });
     }
-  }
+  };
 
-
+  const deleteMovie = async(movie) => {
+    const movieDoc = doc(db,"watchlist",movie);
+    await deleteDoc(movieDoc);
+  };
 
   return (
     <div className="App">
@@ -67,10 +70,10 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home/>} />
-          <Route path='/watchlist' element={<Watchlist addMovie={addMovie}/>} />
-          <Route path='/top250' element={<MovieList moviesData={top250MoviesData.items} addMovie={addMovie}/>} />
-          <Route path='/popular' element={<MovieList moviesData={popMoviesData.items} addMovie={addMovie}/>} />
-          <Route path='/search' element={<Search addMovie={addMovie}/>} />
+          <Route path='/watchlist' element={<Watchlist addMovie={addMovie} deleteMovie={deleteMovie} />} />
+          <Route path='/top250' element={<MovieList moviesData={top250MoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie} />} />
+          <Route path='/popular' element={<MovieList moviesData={popMoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie}/>} />
+          <Route path='/search' element={<Search addMovie={addMovie} deleteMovie={deleteMovie}/>} />
 
 
         </Routes>

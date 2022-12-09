@@ -3,7 +3,7 @@ import { Form, Navigate, useNavigate } from "react-router-dom";
 import Movie from "./Movie";
 import MovieList from "./MovieList";
 
-const Search = () => {
+const Search = ({deleteMovie,addMovie}) => {
 
     const [search,setSearch] = useState("");
     const [searchMovieDetails,setSearchMovieDetails] = useState([]);
@@ -35,7 +35,7 @@ const Search = () => {
             </form>
             <div className="movie-card-list">
                 {searchMovieDetails.results && searchMovieDetails.results.map(movie => {
-                    return <Movie key={movie.id} movie={movie} />
+                    return <Movie key={movie.id} movie={movie} addMovie={addMovie} deleteMovie={deleteMovie} />
                 })}
             </div>
 

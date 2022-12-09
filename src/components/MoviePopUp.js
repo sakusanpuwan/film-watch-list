@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 
 
-const MoviePopUp = ({movie,togglePopUp,addMovie}) => {
+const MoviePopUp = ({ movie , togglePopUp , addMovie , deleteMovie }) => {
 
     const [movieDetails,setMovieDetails] = useState(null);
 
@@ -93,14 +93,14 @@ const MoviePopUp = ({movie,togglePopUp,addMovie}) => {
                                 </div>
                             </div>
                             <div className="pop-up-btn">
-                                <button className='pop-up-add-btn' onClick={addMovie(movieDetails)}>Add</button>
-                                <button className='pop-up-remove-btn'>Remove</button>
+                                <button className='pop-up-add-btn' onClick={addMovie(movieDetails) }>Add</button>
+                                <button className='pop-up-remove-btn' onClick={deleteMovie(movieDetails)} >Remove</button>
                             </div>
                         </div>
                         <button className="close-pop-up-btn" onClick={togglePopUp}>❌</button>
                     </div>
                 </div>
-        ) : null}
+        ) : null}   
         </>
 
         
