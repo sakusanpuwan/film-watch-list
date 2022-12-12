@@ -15,7 +15,7 @@ const MoviePopUp = ({ movie , togglePopUp , addMovie , deleteMovie }) => {
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
-                const response = await fetch(`https://imdb-api.com/en/API/Title/k_fxsv9nk9/${movieId}/FullActor,Trailer,Ratings,`);
+                const response = await fetch(`https://imdb-api.com/en/API/Title/k_ttyuxc1j/${movieId}/FullActor,Trailer,Ratings,`);
                 const data = await response.json();
                 setMovieDetails(data);
                 
@@ -93,8 +93,8 @@ const MoviePopUp = ({ movie , togglePopUp , addMovie , deleteMovie }) => {
                                 </div>
                             </div>
                             <div className="pop-up-btn">
-                                <button className='pop-up-add-btn' onClick={addMovie(movieDetails) }>Add</button>
-                                <button className='pop-up-remove-btn' onClick={deleteMovie(movieDetails)} >Remove</button>
+                                <button className='pop-up-add-btn' onClick={() => {addMovie(movieDetails) }}>Add</button>
+                                <button className='pop-up-remove-btn' onClick={() => {deleteMovie(movieDetails)}} >Remove</button>
                             </div>
                         </div>
                         <button className="close-pop-up-btn" onClick={togglePopUp}>❌</button>

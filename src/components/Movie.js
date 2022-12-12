@@ -26,8 +26,7 @@ const Movie = ({movie,addMovie,deleteMovie}) => {
             </div>
             <div className="movie-card-overlay">
                 <div className="movie-card-text">
-                    <h3>{movie.title}</h3>
-                    <h3>{movie.year ? movie.year : movie.description}</h3>
+                    <h3>{movie.fullTitle}</h3>
                     <h3>{movie.imDbRating ? movie.imDbRating : null}⭐</h3>
                 </div>
             </div>
