@@ -37,18 +37,18 @@ function App() {
     setPopMoviesData(data);
   }
 
-  const titleQuery = query(watchlistCollectionRef, where("fullTitle","==","Se7en (1995)"))
+  // const titleQuery = query(watchlistCollectionRef, where("fullTitle","==","Se7en (1995)"))
 
-  const getData = () => {
-    onSnapshot(titleQuery,(data) => {
-      console.log(data.docs.map((item)=>{return item.data()}));
-    })
-  }
+  // const getData = () => {
+  //   onSnapshot(titleQuery,(data) => {
+  //     console.log(data.docs.map((item)=>{return item.data()}));
+  //   })
+  // }
 
   useEffect(() => {
     fetch250MoviesData();
     fetchPopMovieData();
-    getData();
+    // getData();
   },[])
 
 
@@ -67,11 +67,13 @@ function App() {
   };
 
   const deleteMovie = async(movie) => {
-    // const idQuery = query(collection(db, 'watchlist'), where('imDd', '==', movie.id));
-    // const docSnap = await getDocs(idQuery);
-    // docSnap.forEach((doc) => {
-    //   deleteDoc(doc.ref);
-    // });
+    const idQuery = query(watchlistCollectionRef, where('imDb', '==', movie.id));
+    const docSnapshot = await getDocs(idQuery);
+    const results = docSnapshot.docs
+    docSnapshot.forEach((doc) => {
+      deleteDoc(doc.ref)
+    });
+
 
     // const idQuery = query(collection(db, 'watchlist'), where('imDd', '==', movie.id));
     // const docSnap = await getDocs(idQuery);
@@ -80,12 +82,12 @@ function App() {
     // })
     // await batch.commit()
 
-    const idQuery = db.collection("watchlist").where("imDb","==",movie.id);
-    idQuery.get().then(function(querySnapshot){
-      querySnapshot.forEach(function(doc){
-        doc.ref.delete()
-      })
-    })
+    // const idQuery = query(watchlistCollectionRef, where("imDb","==",movie.id));
+    // idQuery.then(function(querySnapshot){
+    //   querySnapshot.forEach(function(doc){
+    //     doc.ref.delete()
+    //   })
+    // })
 
     alert(`${movie.fullTitle} deleted`);
   };
