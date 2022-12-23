@@ -43,6 +43,7 @@ const Home = ({ addMovie , deleteMovie}) => {
             <div className="home-random-movie-card">
                 <h3>Your Random Movie Is</h3>
                 { randomMovie && <Movie movie={randomMovie} addMovie={addMovie} deleteMovie={deleteMovie}/>}
+                <button className="home-random-btn" onClick={() => {getRandomMovie()}}>Generate!</button>
             </div>
             
         </div>

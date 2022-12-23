@@ -3,7 +3,7 @@
 }
 
 .home-container{
-  height: 100vh;
+  height: 90vh;
   text-align: center;
   color: white;
   margin: auto;
@@ -15,7 +15,21 @@
   width: 35%;
 }
 
+.home-random-btn{
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+.home-random-btn:hover{
+  background-color: rgb(153, 141, 141);
+}
 
 .navbar{
     display: flex;
@@ -325,7 +339,7 @@
     padding: 10px;
     text-align: center;
     display: block;
-    min-height: 100vh;
+    min-height: 90vh;
   }
 
   .search-bar{
@@ -352,7 +366,7 @@
 
   .watchlist-container{
     text-align: center;
-    min-height: 100vh;
+    min-height: 90vh;
   }
 
   .watchlist-container h1{
