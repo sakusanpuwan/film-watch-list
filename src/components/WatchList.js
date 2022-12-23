@@ -2,9 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import { db } from "../firebase-config";
 import { collection, doc, getDocs, addDoc } from 'firebase/firestore';
 import Movie from "./Movie";
+import MovieList from "./MovieList";
 
 
-const Watchlist = ({addMovie , deleteMovie}) => {
+const Watchlist = ({ moviesData , addMovie , deleteMovie}) => {
 
     const [myMovies, setMyMovies] = useState([]);
     const watchlistCollectionRef = collection(db,"watchlist") 
@@ -14,29 +15,23 @@ const Watchlist = ({addMovie , deleteMovie}) => {
     //     setMyMovies(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     // }
 
-    const fetchMyMovies = useCallback(async () => {
-        const data = await getDocs(watchlistCollectionRef);
-        const response = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        const unique = [...new Map(response.map(item => [item['imDb'], item])).values()]
-        setMyMovies(unique);
-    }, [collection])
+    // const fetchMyMovies = useCallback(async () => {
+    //     const data = await getDocs(watchlistCollectionRef);
+    //     const response = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    //     const unique = [...new Map(response.map(item => [item['imDb'], item])).values()]
+    //     setMyMovies(unique);
+    // }, [collection])
 
-    useEffect(() => {
-        fetchMyMovies();
-    },[fetchMyMovies]);
+    // useEffect(() => {
+    //     fetchMyMovies();
+    // },[fetchMyMovies]);
 
-  
+    
 
     return (
-        <div className="watchlist-container">
-            <h1>Your Watchlist</h1>
-            
-            <div className="movie-card-list"> 
-                {myMovies.map((movie) => { 
-                    return (
-                    <Movie key={movie.imDb} movie={movie} addMovie = {addMovie} deleteMovie = {deleteMovie} />
-                )})}
-            </div>
+        <div className="tab-movielist-container">
+            <h1 className="tab-header">Your Watchlist</h1>
+            <MovieList moviesData={moviesData} addMovie={addMovie} deleteMovie={deleteMovie}/>
         </div>
     )
 }

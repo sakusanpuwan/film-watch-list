@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
-import { db } from "./firebase-config";
+import { auth, db } from "./firebase-config";
 import { collection, doc, getDocs, addDoc, deleteDoc, QuerySnapshot, DocumentSnapshot, onSnapshot, query, where , writeBatch } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import './App.css';
 import Home from './components/Home';
 import MovieList from './components/MovieList';
 import Search from './components/Search';
-import Top250 from './components/Top250';
 import Watchlist from './components/WatchList';
-import { runTransaction } from "firebase/firestore";
-import { async } from '@firebase/util';
+import Account from './components/Account';
+import Top250 from './components/Top250';
+import Popular from './components/Popular';
+
+
 
 
 
@@ -17,10 +20,11 @@ function App() {
 
   const [top250MoviesData,setTop250MoviesData] = useState([]);
   const [popMoviesData,setPopMoviesData] = useState([]);
+  const [myMovies, setMyMovies] = useState([]);
+
   
   const watchlistCollectionRef = collection(db,"watchlist") 
-
-  const batch = writeBatch(db);
+  
 
 
 
@@ -37,6 +41,13 @@ function App() {
     setPopMoviesData(data);
   }
 
+  const fetchMyMovies = useCallback(async () => {
+    const data = await getDocs(watchlistCollectionRef);
+    const response = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    const unique = [...new Map(response.map(item => [item['imDb'], item])).values()]
+    setMyMovies(unique);
+  }, [collection])
+
   // const titleQuery = query(watchlistCollectionRef, where("fullTitle","==","Se7en (1995)"))
 
   // const getData = () => {
@@ -49,6 +60,10 @@ function App() {
     fetch250MoviesData();
     fetchPopMovieData();
     // getData();
+    fetchMyMovies();
+    // onAuthStateChanged(auth,(currentUser) => {
+    //   setUser(currentUser);
+    // })
   },[])
 
 
@@ -62,38 +77,42 @@ function App() {
     const found = data.docs.some(doc => doc.imDb === movie.id);
     if (!found) {
       await addDoc(watchlistCollectionRef,  {imDb:movie.id , imDbRating:movie.imDbRating , image:movie.image , fullTitle:movie.fullTitle });
+      alert(`${movie.fullTitle} has been added`);
+    } else{
+      alert(`${movie.fullTitle} has already been added`);
     }
-    alert(`${movie.fullTitle} added`)
+    
   };
 
   const deleteMovie = async(movie) => {
     const idQuery = query(watchlistCollectionRef, where('imDb', '==', movie.id));
     const docSnapshot = await getDocs(idQuery);
-    const results = docSnapshot.docs
     docSnapshot.forEach((doc) => {
       deleteDoc(doc.ref)
     });
 
-
-    // const idQuery = query(collection(db, 'watchlist'), where('imDd', '==', movie.id));
-    // const docSnap = await getDocs(idQuery);
-    // docSnap.forEach(doc => {
-    //   batch.delete(doc.ref);
-    // })
-    // await batch.commit()
-
-    // const idQuery = query(watchlistCollectionRef, where("imDb","==",movie.id));
-    // idQuery.then(function(querySnapshot){
-    //   querySnapshot.forEach(function(doc){
-    //     doc.ref.delete()
-    //   })
-    // })
-
-    alert(`${movie.fullTitle} deleted`);
+    alert(`${movie.fullTitle} has been deleted`);
   };
 
-  // https://stackoverflow.com/questions/65862073/how-to-delete-documents-by-value-name
+  const register = async (registerEmail,registerPassword) => {
+    try {
+      const user = await createUserWithEmailAndPassword(auth,registerEmail,registerPassword);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
+  const logout = async () => {
+    await signOut(auth)
+  }
+
+  const login = async(email,password) => {
+    try {
+      const user = await signInWithEmailAndPassword(auth,email,password)
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
 
 
@@ -107,14 +126,16 @@ function App() {
           <li><Link to='/top250'>Top 250</Link></li>
           <li><Link to='/popular'>Popular</Link></li>
           <li><Link to='/search'>Search</Link></li>
+          {/* <li><Link to='/account'>Account</Link></li> */}
         </ul>
 
         <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/watchlist' element={<Watchlist addMovie={addMovie} deleteMovie={deleteMovie} />} />
-          <Route path='/top250' element={<MovieList moviesData={top250MoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie} />} />
-          <Route path='/popular' element={<MovieList moviesData={popMoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie}/>} />
+          <Route path='/' element={<Home addMovie={addMovie} deleteMovie={deleteMovie}/>} />
+          <Route path='/watchlist' element={<Watchlist moviesData={myMovies} addMovie={addMovie} deleteMovie={deleteMovie} />} />
+          <Route path='/top250' element={<Top250 moviesData={top250MoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie} />} />
+          <Route path='/popular' element={<Popular moviesData={popMoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie}/>} />
           <Route path='/search' element={<Search addMovie={addMovie} deleteMovie={deleteMovie}/>} />
+          {/* <Route path='/account' element={<Account register={register} user={user} logout={logout} login={login} />} /> */}
 
 
         </Routes>

@@ -6,7 +6,16 @@
   height: 100vh;
   text-align: center;
   color: white;
+  margin: auto;
+  width: 50%;
 }
+
+.home-random-movie-card{
+  margin: auto;
+  width: 35%;
+}
+
+
 
 .navbar{
     display: flex;
@@ -39,6 +48,12 @@
     color: #1b5e1d;
 }
 
+.tab-header{
+  color: white;
+  display: block;
+  text-align: center;
+}
+
 
 .movie-card {
     display: block;
@@ -46,8 +61,7 @@
     padding: 10px;
     z-index: 1;
     width: 20%;
-    
-  }
+}
   
   .movie-card-list{
     display: flex;
@@ -55,7 +69,7 @@
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-    
+    min-height: 100vh;
   }
   
   .movie-card-container{
@@ -130,14 +144,16 @@
   
   .pop-up{
     position: absolute;
-    background: rgba(236, 218, 218, 0.89);
+    background: rgba(112, 105, 105, 1);
     top: 43%;
-    left: 50%;
+    left: 49.25%;
     transform: translate(-50%, -50%);
     z-index: 101;
     width: 95%;
     height: 95%;
     margin-top: 4.5%;
+    color: white;
+    cursor: default;
   }
   
   .close-pop-up-btn{
@@ -274,6 +290,7 @@
     border-radius: 4px;
     border: none;
     font-weight: bold;
+    cursor: pointer;
   }
 
   .pop-up-add-btn{
