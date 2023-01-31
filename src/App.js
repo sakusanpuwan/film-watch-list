@@ -121,20 +121,20 @@ function App() {
         <BrowserRouter>
 
         <ul className='navbar'>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/watchlist'>Watch List</Link></li>
-          <li><Link to='/top250'>Top 250</Link></li>
-          <li><Link to='/popular'>Popular</Link></li>
-          <li><Link to='/search'>Search</Link></li>
+          <li><Link to='/film-watch-list'>Home</Link></li>
+          <li><Link to='/film-watch-list/watchlist'>Watch List</Link></li>
+          <li><Link to='/film-watch-list/top250'>Top 250</Link></li>
+          <li><Link to='/film-watch-list/popular'>Popular</Link></li>
+          <li><Link to='/film-watch-list/search'>Search</Link></li>
           {/* <li><Link to='/account'>Account</Link></li> */}
         </ul>
 
         <Routes>
-          <Route path='/' element={<Home addMovie={addMovie} deleteMovie={deleteMovie}/>} />
-          <Route path='/watchlist' element={<Watchlist moviesData={myMovies} addMovie={addMovie} deleteMovie={deleteMovie} />} />
-          <Route path='/top250' element={<Top250 moviesData={top250MoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie} />} />
-          <Route path='/popular' element={<Popular moviesData={popMoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie}/>} />
-          <Route path='/search' element={<Search addMovie={addMovie} deleteMovie={deleteMovie}/>} />
+          <Route path='/film-watch-list' element={<Home addMovie={addMovie} deleteMovie={deleteMovie}/>} />
+          <Route path='/film-watch-list/watchlist' element={<Watchlist moviesData={myMovies} addMovie={addMovie} deleteMovie={deleteMovie} />} />
+          <Route path='/film-watch-list/top250' element={<Top250 moviesData={top250MoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie} />} />
+          <Route path='/film-watch-list/popular' element={<Popular moviesData={popMoviesData.items} addMovie={addMovie} deleteMovie={deleteMovie}/>} />
+          <Route path='/film-watch-list/search' element={<Search addMovie={addMovie} deleteMovie={deleteMovie}/>} />
           {/* <Route path='/account' element={<Account register={register} user={user} logout={logout} login={login} />} /> */}
 
 
